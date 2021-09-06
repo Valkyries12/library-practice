@@ -1,0 +1,129 @@
+* {
+    box-sizing: border-box;
+    color: #282A33;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    align-items: center;
+    background-color: #D6E0F0;
+    border-bottom: 2px solid #666;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+
+.logo {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 100px;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+}
+
+.btn {
+    border-radius: 5px;
+    border: 2px solid #666;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+.btn-login {
+    margin-top: 20px;
+}
+
+.main {
+    align-items: center;
+    background-color: #F1F3F8;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 35px;
+}
+
+.section-books {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.btn-add {
+    background-color: #ABF79C;
+    margin-bottom: 30px;
+}
+
+.card {
+    align-items: center;
+    background-color: #E0E2E7;
+    border-radius: 5px;
+    border: 2px solid #666;
+    display: flex;
+    flex-direction: column;
+    max-width: 390px;
+    min-width: 300px;
+    width: 100%;
+}
+
+.card-title,
+.card-author,
+.card-pages {
+    font-family: 'Oswald', sans-serif;
+    font-size: 35px;
+    margin: 10px 0;
+    text-transform: lowercase;
+}
+
+.card-isRead {
+    background-color: #FFE8E8;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    transition: .5s background;
+    width: 80%;
+}
+
+.card-isRead:hover {
+    background-color: #EED7D7;
+}
+
+.card-remove {
+    background-color: #DA9797;
+    margin-bottom: 30px;
+    transition: .5s background;
+    width: 80%;
+}
+
+.card-remove:hover {
+    background-color: #c98686;
+}
+
+.hide {
+    display: none;
+}
+
+
+
+/*****************************************************/
+/*************RESPONSIVE******************************/
+/*****************************************************/
+
+@media screen and (min-width: 450px) {
+
+    .section-books {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        
+    }
+
+    .card {
+        margin-bottom: 50px;
+    }
+
+
+}
+
