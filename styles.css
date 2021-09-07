@@ -57,6 +57,11 @@
     background-color: #ABF79C;
     font-size: 40px;
     margin-bottom: 30px;
+    transition: .5s background;
+}
+
+.btn-add:hover {
+    background-color: #9AE68b;
 }
 
 .card {
