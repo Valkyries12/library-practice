@@ -44,6 +44,7 @@
     display: flex;
     flex-direction: column;
     padding: 40px 35px;
+    
 }
 
 .section-books {
@@ -54,6 +55,7 @@
 
 .btn-add {
     background-color: #ABF79C;
+    font-size: 40px;
     margin-bottom: 30px;
 }
 
@@ -64,6 +66,7 @@
     border: 2px solid #666;
     display: flex;
     flex-direction: column;
+    margin-bottom: 50px;
     max-width: 390px;
     min-width: 300px;
     width: 100%;
@@ -105,6 +108,70 @@
     display: none;
 }
 
+.overlay {
+    background-color: rgba(0, 0, 0, .7);
+    height: 100vh;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.modal {
+    border-radius: 6px;
+    left: 50%;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal-title {
+    font-size: 40px;
+}
+
+.modal-form {
+    background-color: #D6E0F0;
+    font-family: 'Oswald', sans-serif;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 35px;
+}
+
+.btn-submit {
+    background-color: #ABF79C;
+    transition: .5s background;
+}
+
+.btn-submit:hover {
+    background-color: #9AE68b;
+}
+
+input[type="text"] {
+    padding: 10px;
+    cursor: text;
+    border: 2px solid #666;
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 25px;
+    font-family: 'Oswald', sans-serif;
+    margin: 15px 0;
+}
+
+input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+label {
+    font-size: 24px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+}
+
 
 
 /*****************************************************/
@@ -112,6 +179,19 @@
 /*****************************************************/
 
 @media screen and (min-width: 450px) {
+
+    .header {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+
+    .btn-login {
+        margin-top: 0;
+    }
+
+    .btn-add {
+        font-size: 50px;
+    }
 
     .section-books {
         flex-direction: row;

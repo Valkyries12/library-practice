@@ -13,7 +13,7 @@
 <body>
     <header class="header">
         <p class="logo">library</p>
-        <button class="btn-login btn">log in</button>
+        <button class="btn-login btn hide">log in</button>
     </header>
     <main class="main">
         <button class="btn-add btn">add book</button>
@@ -51,6 +51,19 @@
             </div>
         </section>
     </main>
+    <div class="overlay hide"></div>
+    <div class="modal hide">
+        <form action="#" class="modal-form">
+            <p class="modal-title">Add new book</p>
+            <input type="text" name="title" id="title" placeholder="Title" required>
+            <input type="text" name="author" id="author" placeholder="Author" required>
+            <input type="text" name="pages" id="pages" placeholder="Pages">
+            <label for="readIt">Have you read it?
+                <input type="checkbox" name="readIt" id="readIt">
+            </label>
+            <button type="submit" class="btn btn-submit">Submit</button>
+        </form>
+    </div>
     <script src="app.js"></script>
 </body>
 </html>
