@@ -18,46 +18,16 @@
     <main class="main">
         <button class="btn-add btn">add book</button>
         <section class="section-books">
-            <div class="card">
-                <p class="card-title">titulo libro</p>
-                <p class="card-author">el autor</p>
-                <p class="card-pages">xxx pages</p>
-                <button class="card-isRead btn">Not read</button>
-                <button class="card-remove btn">Remove</button>
-            </div>
 
-            <div class="card">
-                <p class="card-title">titulo libro</p>
-                <p class="card-author">el autor</p>
-                <p class="card-pages">xxx pages</p>
-                <button class="card-isRead btn">Not read</button>
-                <button class="card-remove btn">Remove</button>
-            </div>
-
-            <div class="card">
-                <p class="card-title">titulo libro</p>
-                <p class="card-author">el autor</p>
-                <p class="card-pages">xxx pages</p>
-                <button class="card-isRead btn">Not read</button>
-                <button class="card-remove btn">Remove</button>
-            </div>
-
-            <div class="card">
-                <p class="card-title">titulo libro</p>
-                <p class="card-author">el autor</p>
-                <p class="card-pages">xxx pages</p>
-                <button class="card-isRead btn">Not read</button>
-                <button class="card-remove btn">Remove</button>
-            </div>
         </section>
     </main>
     <div class="overlay hide"></div>
     <div class="modal hide">
-        <form action="#" class="modal-form">
+        <form  class="modal-form" method="POST">
             <p class="modal-title">Add new book</p>
             <input type="text" name="title" id="title" placeholder="Title" required>
             <input type="text" name="author" id="author" placeholder="Author" required>
-            <input type="text" name="pages" id="pages" placeholder="Pages">
+            <input type="text" name="pages" id="pages" placeholder="Pages" required>
             <label for="readIt">Have you read it?
                 <input type="checkbox" name="readIt" id="readIt">
             </label>
