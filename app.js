@@ -104,14 +104,27 @@ function drawBook(library) {
         if(book.isRead) {
             buttonIsRead.classList.toggle("isread");
         };
-
     });
-    
 };
+
+const toggleIsRead = (e, library) => {
+    if(e.target.classList.contains("card-isRead")) {
+        const index = e.target.parentElement.id;
+        const book = library[index];
+        book["isRead"] = book.isRead ? false : true;
+        localStorage.setItem("myLibrary", JSON.stringify(library));
+    };
+    cleanBooks();
+    drawBook(library);
+};
+
+
+
 
 //btnAdd.addEventListener("click", togglePopup);
 window.addEventListener("click", (e) => {togglePopup(e)});
 btnSubmit.addEventListener("click", function(e) { addToLibrary(e, createBook(), JSON.parse(localStorage.getItem("myLibrary")))});
-sectionBooks.addEventListener("click", function(e) { removeFromLibrary(e, JSON.parse(localStorage.getItem("myLibrary"))) })
+sectionBooks.addEventListener("click", function(e) { removeFromLibrary(e, JSON.parse(localStorage.getItem("myLibrary"))) });
+sectionBooks.addEventListener("click", function(e) { toggleIsRead(e, JSON.parse(localStorage.getItem("myLibrary"))) });
 
 
