@@ -1,6 +1,15 @@
 const btnSubmit = document.querySelector(".btn-submit");
 const sectionBooks = document.querySelector(".section-books");
-const myLibrary = [];
+
+let myLibrary;
+
+if(window.localStorage.length == 0) {
+    localStorage.setItem("myLibrary", JSON.stringify([]));
+    myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+} else {
+    drawBook(JSON.parse(localStorage.getItem("myLibrary")));
+}
+
 
 
 const togglePopup = (e) => {
@@ -22,15 +31,28 @@ const togglePopup = (e) => {
 
 const addToLibrary = (e, newBook, library) => {
     e.preventDefault();
-    myLibrary.push(newBook);
+    const localStLibrary = JSON.parse(localStorage.getItem("myLibrary"));
+    localStLibrary.push(newBook);
+    localStorage.setItem("myLibrary", JSON.stringify(localStLibrary));
+    //myLibrary.push(newBook);
     cleanForm();
-    drawBook(library);
+    cleanBooks();
+    drawBook(localStLibrary);
 };
 
 const removeFromLibrary = (e, library) => {
     if(e.target.classList.contains("card-remove")) {
+        
         const index = parseInt(e.target.parentElement.attributes["data-index"].value);
         console.log(index)
+        for(let i = 0; i < library.length; i++ ) {
+            if(library[i] === library[index]) {
+                library.splice(i, 1);
+            }
+        };
+        cleanBooks();
+        localStorage.setItem("myLibrary", JSON.stringify(library));
+        drawBook(JSON.parse(localStorage.getItem("myLibrary")));
     };
 };
 
@@ -52,7 +74,12 @@ const cleanForm = () => {
     title.value = "";
     author.value = "";
     pages.value = "";
-}
+};
+
+const cleanBooks = () => {
+    const sectionBooks = document.querySelector(".section-books");
+    sectionBooks.innerHTML = "";
+};
 
 function Book(title, author, pages, isRead) {
     this.title = title;
@@ -62,7 +89,7 @@ function Book(title, author, pages, isRead) {
 
 };
 
-const drawBook = (library) => {
+function drawBook(library) {
     library.map(book => {
         const card = `<div data-index=${library.length-1} class="card">
                     <p class="card-title">${book.title}</p>
@@ -79,7 +106,7 @@ const drawBook = (library) => {
 
 //btnAdd.addEventListener("click", togglePopup);
 window.addEventListener("click", (e) => {togglePopup(e)});
-btnSubmit.addEventListener("click", function(e) { addToLibrary(e, createBook(), myLibrary)});
-sectionBooks.addEventListener("click", function(e) { removeFromLibrary(e, myLibrary) })
+btnSubmit.addEventListener("click", function(e) { addToLibrary(e, createBook(), JSON.parse(localStorage.getItem("myLibrary")))});
+sectionBooks.addEventListener("click", function(e) { removeFromLibrary(e, JSON.parse(localStorage.getItem("myLibrary"))) })
 
 
