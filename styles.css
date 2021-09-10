@@ -98,6 +98,15 @@
     background-color: #EED7D7;
 }
 
+.isread {
+    background-color: #ABF79C;
+    transition: .5s background;
+}
+
+.isread:hover {
+    background-color: #9AE68b;
+}
+
 .card-remove {
     background-color: #DA9797;
     margin-bottom: 30px;

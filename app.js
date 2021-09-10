@@ -44,7 +44,7 @@ const removeFromLibrary = (e, library) => {
     if(e.target.classList.contains("card-remove")) {
         
         const index = parseInt(e.target.parentElement.attributes["data-index"].value);
-        console.log(index)
+        //console.log(index)
         for(let i = 0; i < library.length; i++ ) {
             if(library[i] === library[index]) {
                 library.splice(i, 1);
@@ -90,8 +90,8 @@ function Book(title, author, pages, isRead) {
 };
 
 function drawBook(library) {
-    library.map(book => {
-        const card = `<div data-index=${library.length-1} class="card">
+    library.map((book, index) => {
+        const card = `<div data-index=${index} id="${index}" class="card">
                     <p class="card-title">${book.title}</p>
                     <p class="card-author">${book.author}</p>
                     <p class="card-pages">${book.pages}</p>
@@ -100,6 +100,11 @@ function drawBook(library) {
                 </div>`;
         const sectionBooks = document.querySelector(".section-books");
         sectionBooks.innerHTML += card;
+        const buttonIsRead = document.getElementById(`${index}`).querySelector(".card-isRead");
+        if(book.isRead) {
+            buttonIsRead.classList.toggle("isread");
+        };
+
     });
     
 };
