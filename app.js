@@ -1,5 +1,6 @@
 const btnSubmit = document.querySelector(".btn-submit");
 const sectionBooks = document.querySelector(".section-books");
+const inputPages = document.querySelector("#pages");
 
 let myLibrary;
 
@@ -8,7 +9,7 @@ if(window.localStorage.length == 0) {
     myLibrary = JSON.parse(localStorage.getItem("myLibrary"));
 } else {
     drawBook(JSON.parse(localStorage.getItem("myLibrary")));
-}
+};
 
 
 
@@ -31,10 +32,15 @@ const togglePopup = (e) => {
 
 const addToLibrary = (e, newBook, library) => {
     e.preventDefault();
+    const title = document.querySelector("#title");
+    const author = document.querySelector("#author");
+    const pages = document.querySelector("#pages");
+    if(title.value == "" || author.value == "" || pages.value == "") {
+        return
+    };
     const localStLibrary = JSON.parse(localStorage.getItem("myLibrary"));
     localStLibrary.push(newBook);
     localStorage.setItem("myLibrary", JSON.stringify(localStLibrary));
-    //myLibrary.push(newBook);
     cleanForm();
     cleanBooks();
     drawBook(localStLibrary);
@@ -42,9 +48,7 @@ const addToLibrary = (e, newBook, library) => {
 
 const removeFromLibrary = (e, library) => {
     if(e.target.classList.contains("card-remove")) {
-        
         const index = parseInt(e.target.parentElement.attributes["data-index"].value);
-        //console.log(index)
         for(let i = 0; i < library.length; i++ ) {
             if(library[i] === library[index]) {
                 library.splice(i, 1);
@@ -70,7 +74,6 @@ const cleanForm = () => {
     const title = document.querySelector("#title");
     const author = document.querySelector("#author");
     const pages = document.querySelector("#pages");
-    //const isRead = document.querySelector("#readIt").checked;
     title.value = "";
     author.value = "";
     pages.value = "";
@@ -92,7 +95,7 @@ function Book(title, author, pages, isRead) {
 function drawBook(library) {
     library.map((book, index) => {
         const card = `<div data-index=${index} id="${index}" class="card">
-                    <p class="card-title">${book.title}</p>
+                    <p class="card-title">"${book.title}"</p>
                     <p class="card-author">${book.author}</p>
                     <p class="card-pages">${book.pages}</p>
                     <button class="card-isRead btn">${book.isRead ? "Read" : "Not read"}</button>
@@ -118,13 +121,21 @@ const toggleIsRead = (e, library) => {
     drawBook(library);
 };
 
+const isNum = (e) => {
+    if(e.target.id == "pages") {
+        const isnum = /^\d+$/.test(e.target.value);
+        let val = e.target.value.replace(/[^\d]/g, '');;
+        e.target.value = val;
+    };
+     
+};
 
 
 
-//btnAdd.addEventListener("click", togglePopup);
 window.addEventListener("click", (e) => {togglePopup(e)});
 btnSubmit.addEventListener("click", function(e) { addToLibrary(e, createBook(), JSON.parse(localStorage.getItem("myLibrary")))});
 sectionBooks.addEventListener("click", function(e) { removeFromLibrary(e, JSON.parse(localStorage.getItem("myLibrary"))) });
 sectionBooks.addEventListener("click", function(e) { toggleIsRead(e, JSON.parse(localStorage.getItem("myLibrary"))) });
-
+inputPages.addEventListener("keydown", function(e) { isNum(e) });
+inputPages.addEventListener("keyup", function(e) { isNum(e) });
 
